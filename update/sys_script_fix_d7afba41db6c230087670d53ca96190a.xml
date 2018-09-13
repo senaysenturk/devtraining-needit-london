@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <before>false</before>
+        <description/>
+        <flush_cache>false</flush_cache>
+        <name>Count</name>
+        <record_for_rollback>false</record_for_rollback>
+        <run_once>true</run_once>
+        <script><![CDATA[var user = new GlideRecord('sys_user');
+user.addActiveQuery();
+user.addQuery('sys_id',"46d44a23a9fe19810012d100cca80666");
+	user.query();
+	var count = 0;
+        //gs.print(user);
+
+	while(user.next()){
+			var role = new GlideRecord('sys_user_has_role');
+			 role.addQuery('user', user.sys_id);
+			 role.query();
+			 while(role.next()){
+					   count++;
+                             
+                           
+			 }
+ user.x_58872_needit_license_count = role.name;
+user.update();
+gs.print(count);
+	}]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-09-13 07:39:09</sys_created_on>
+        <sys_id>d7afba41db6c230087670d53ca96190a</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Count</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_fix_d7afba41db6c230087670d53ca96190a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-09-13 08:35:48</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>
